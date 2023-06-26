@@ -20,8 +20,10 @@ python GenROC.py
 # VisualCMT
 An interactive software for Coordinate-wise Monotonic Transformations (CMTs). The software takes in comma-separated value (CSV) formatted data with X, Y, and Z coordinates in the first three columns, and R, G, B color components in the last three columns. The software automatically normalizes the X, Y, and Z coordinates to the range of [-1, 1], while RGB values are expected to be provided in decimal magnitudes. Mouse drag and wheel spin are supported in the input and output view windows. Six CMTs are available including Coordinate-wise Rank Transformation (CRT).
 
-**Input data format example:**
+**Input data structure example:**
+
+![data example](/DataStructureExample.png)
 
 **VisualCMT screenshot:**
 
-![VisualCMT](/Supp_Fig5_CMTsoftware.png)
+![VisualCMT](/VisualCMT.png)
