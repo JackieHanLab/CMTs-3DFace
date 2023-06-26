@@ -1,0 +1,37 @@
+#Parameters defining model, optimizer, scheduler
+amp: False
+ga_multiplier: 1
+npoint1: 1024
+npoint2: 512
+nsample1: 32
+nsample2: 32
+defaults:
+  - model: Menghao
+
+#Parameters defining data loading
+color_space: RGB
+dataset: path/to/your/dataset
+aug: False
+meta: YourMeta.csv
+info_depth: vnc
+padding_manner: zero
+num_points: 12288
+basic_batch_size: 8
+loading_multiplier: 2
+num_workers: 7
+ddp: True
+cross_group: 1
+
+#Parameters defining I/O
+repeat: 1
+save: True
+foldername: path/to/save/your/results
+
+
+hydra:
+  run:
+    dir: ${foldername}
+
+  sweep:
+    dir: sweep
+    subdir: ${model.name}
