@@ -15,7 +15,7 @@ Use scripts in `FPCT-ID`. Put your data split record (simply in txt format) in `
 e.g.
 ```
 python script_main.py ozername=SGD basic_learning_rate=5e-5
-python batch_test_main.py dataset=path/to/your/data foldername=path/to/save/results
+python batch_inter_test_main.py dataset=path/to/your/data foldername=path/to/save/results
 python GenROC.py
 ```
 
