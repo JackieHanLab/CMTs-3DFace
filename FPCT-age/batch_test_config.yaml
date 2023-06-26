@@ -23,9 +23,9 @@ ddp: True
 cross_group: 1
 
 #Parameters defining I/O
-foldername: path/to/save/your/results
 repeat: 1
 save: True
+foldername: path/to/save/your/results
 
 
 hydra:
