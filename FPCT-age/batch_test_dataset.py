@@ -18,7 +18,7 @@ def shuffle_points(item_data):
     np.random.shuffle(idx)
     return item_data[idx]
 
-def rotate_points(item_data, angle_sigma=np.pi):
+def rotate_points(item_data, angle_sigmas=np.pi):
     """ Randomly perturb the point clouds by small rotations
         Input:
           BxNx6 array, original batch of point clouds and point normals
@@ -68,24 +68,10 @@ def scale_points(item_data, scale_low=0.8, scale_high=1.25):
     return item_data
 
 
-# def color_augment(item_data, factor=0.1, info_depth='vnc'):
-#     lightness_jitter = np.random.uniform(-factor,factor)
-#     saturation_jitter = np.random.uniform(-factor,factor)
-#     if 'c' in info_depth:
-#         item_data[:,-2]+=lightness_jitter
-#         item_data[:,-2][item_data[:,-2]<0] = 0
-#         item_data[:,-2][item_data[:,-2]>1] = 1
-#         item_data[:,-1]+=saturation_jitter
-#         item_data[:,-1][item_data[:,-1]<0] = 0
-#         item_data[:,-1][item_data[:,-1]>1] = 1
-#     return item_data
-
 
 class ModelNetDataLoader(Dataset):
-    def __init__(self, root, epoch, aug = True, color_space = 'RGB', info_depth='vnc', num_points=12288, category='test', cross_group=1, meta='Chinese_2016to2020_id+age+sex+face_final.csv', nprseed=0):
+    def __init__(self, root, epoch, aug = True, color_space = 'RGB', info_depth='vnc', num_points=12288, category='test', cross_group=1, meta='YourMeta.csv', nprseed=0):
         self.root = root
-        #data_epoch = epoch%100+1
-        data_epoch = 1
         self.aug = aug
         self.color_space = color_space
         self.info_depth = info_depth
@@ -97,11 +83,10 @@ class ModelNetDataLoader(Dataset):
         self.meta = meta
         self.data_source = self.root
         suffix = self.category if self.category=='test' else f'{self.category}-{self.cross_group}'
-        with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'DataSplit', f'ChineseFinal_{suffix}.txt'), 'r') as f:
+        with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'DataSplit', f'YourDataRecord.txt'), 'r') as f:
             for line in f:
                 if len(line)>0:
                     self.facedirlist.append(os.path.join(self.data_source, line.strip()+'.csv'))
-        #self.facedirlist = self.facedirlist[:32]
         d = pd.read_csv(os.path.join(root, self.meta))
         self.agedict = dict(zip(d.id,d.age))
 
@@ -129,15 +114,6 @@ class ModelNetDataLoader(Dataset):
         
         if 'n' in self.info_depth:
             second_block = facedata[:,3:6]
-        elif 'M' in self.info_depth:
-            n = facedata[:,3:6]
-            M = (n**2).sum(axis=1)**0.5
-            second_block = M[:,None]
-        elif 'O' in self.info_depth:
-            n = facedata[:,3:6]
-            M = (n**2).sum(axis=1)**0.5+1e-6
-            O = n/M[:,None]
-            second_block = O
         else:
             second_block = padding_block
         
@@ -165,18 +141,3 @@ class ModelNetDataLoader(Dataset):
 
 
 
-if __name__ == '__main__':
-    #base = os.path.dirname(os.path.realpath(__file__))
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--info_depth')
-    parser.add_argument('--padding_manner')
-    args = parser.parse_args()
-    data = ModelNetDataLoader('/lustre2/jdhan_pkuhpc/yangxinyu/Data/ChineseData/HLS_mc_fps4096points_year16to20', 1, args.info_depth, args.padding_manner, 16, category='train', group='1', meta='meta_HLS_16590.csv')
-    DataLoader = torch.utils.data.DataLoader(data, batch_size=4, shuffle=True)
-    for id, point,label in DataLoader:
-        print(id)
-        print(point.shape)
-        print(label.shape)
-        print(point[0,:])
-        print(label)
-        break

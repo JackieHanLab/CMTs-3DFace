@@ -1,23 +1,12 @@
-import argparse
-import random
-import time
-#from pynvml import *
-import os
 import torch
-import numpy as np
 from torch.cuda.amp import autocast as autocast
 from batch_test_dataset import ModelNetDataLoader
 import torch
-import datetime
-from pathlib import Path
-#from tqdm import tqdm
-import sys
-import provider
-from contextlib import nullcontext
+
 
 def load_data(cat, opt, epoch):
     # set a different random seed for each epoch so as to load each face in a slightly different way for augmentation
-    epochseed = epoch#np.random.randint(0,10000)
+    epochseed = epoch
     dataset = ModelNetDataLoader(root=opt.data_path, 
         epoch = epoch,
         aug = opt.aug,
@@ -29,7 +18,6 @@ def load_data(cat, opt, epoch):
         meta=opt.meta, 
         nprseed = epochseed)
 
-    #shuffle_dict = {'train':True, 'val':False, 'test':False}
     # define sampler for DDP
     datasampler = None
 
@@ -56,7 +44,7 @@ def val(model, opt, epoch):
     pred_cache = []
 
     # evaluate on val set
-    
+
     for data in val_loader:
         id, points, age = data
         points, age = points.cuda(opt.rank), age.cuda(opt.rank)
@@ -67,7 +55,6 @@ def val(model, opt, epoch):
         age_cache.append(age)
         pred_cache.append(pred)
     val_MAE = val_MAE/val_total
-    #del val_set, val_sampler, val_loader, points, target, pred, pred_choice
     all_id = torch.cat(id_cache).to(dtype=torch.int)
     all_age = torch.cat(age_cache)
     all_pred = torch.cat(pred_cache)

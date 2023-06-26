@@ -107,11 +107,10 @@ class ModelNetDataLoader(Dataset):
         self.facedirlist = []
         self.meta = meta
         self.data_source = self.root
-        with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'DataSplit', f'ChineseFinal_{self.category}-{self.cross_group}.txt'), 'r') as f:
+        with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'DataSplit', f'YourDataRecord.txt'), 'r') as f:
             for line in f:
                 if len(line)>0:
                     self.facedirlist.append(os.path.join(self.data_source, line.strip()+'.csv'))
-        #self.facedirlist = self.facedirlist[:32]
         d = pd.read_csv(os.path.join(root, self.meta))
         self.agedict = dict(zip(d.id,d.age))
 

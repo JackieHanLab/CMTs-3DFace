@@ -103,9 +103,7 @@ def main_worker(gpu, args):
 
     # initialize model
     torch.cuda.set_device(args.rank)
-    #torch.set_default_dtype(torch.float32)
     RegModel = getattr(importlib.import_module('models.{}.model'.format(args.model.name)), 'PointTransformer')(args)
-    #print(f'rank {args.rank} Initiated state dict:\n', RegModel.state_dict()['conv_fuse.1.weight'])
 
     if args.distributed == 1:
         dist.init_process_group(                                   
