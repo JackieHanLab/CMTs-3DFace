@@ -18,7 +18,7 @@ python GenROC.py
 ```
 
 # VisualCMT
-An interactive software for Coordinate-wise Monotonic Transformations (CMTs). The software takes in comma-separated value (CSV) formatted data with X, Y, and Z coordinates in the first three columns, and R, G, B color components in the last three columns. The software automatically normalizes the X, Y, and Z coordinates to the range of [-1, 1], while RGB values are expected to be provided in decimal magnitudes. Mouse drag and wheel spin are supported in the input and output view windows. Six CMTs are available including Coordinate-wise Rank Transformation (CRT).
+Download and unzip `VisualCMT_compressed.zip`, then double click `VisualCMT.exe` to use. It is an interactive software for Coordinate-wise Monotonic Transformations (CMTs). The software takes in comma-separated value (CSV) formatted data with X, Y, and Z coordinates in the first three columns, and R, G, B color components in the last three columns. The software automatically normalizes the X, Y, and Z coordinates to the range of [-1, 1], while RGB values are expected to be provided in decimal magnitudes. Mouse drag and wheel spin are supported in the input and output view windows. Six CMTs are available including Coordinate-wise Rank Transformation (CRT).
 
 **Input data structure example:**
 
@@ -27,3 +27,5 @@ An interactive software for Coordinate-wise Monotonic Transformations (CMTs). Th
 **VisualCMT screenshot:**
 
 ![VisualCMT](/VisualCMT.png)
+
+The software was packed using PyInstaller and mannually reduced volume in a Win11 system, please report issue if the software fail to run in your system.
