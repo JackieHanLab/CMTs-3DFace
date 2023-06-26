@@ -1,0 +1,51 @@
+#Parameters defining model, optimizer, scheduler
+ozername: Adam
+basic_learning_rate: 5e-5
+beta1: 0.9
+beta2: 0.999
+scheduler: AdamItself #CosAnneal #ReduceOnPlateau
+# patience: 20
+# factor: 0.3
+weight_decay: 1e-2
+amp: False
+ga_multiplier: 1
+num_epochs: 2000
+npoint1: 512
+npoint2: 256
+nsample1: 32
+nsample2: 32
+arcs: 8
+arcm: 0.1
+defaults:
+  - model: Menghao
+
+#Parameters defining data loading
+color_space: RGB
+aug: True
+meta: YourMeta.csv
+info_depth: vnc
+num_points: 12288
+basic_batch_size: 8
+loading_multiplier: 2
+num_workers: 7
+ddp: True
+dataset: path/to/your/dataset
+topo: False
+
+#Parameters defining I/O
+repeat: 1
+foldername: path/to/save/your/model
+save: True
+
+# Load pretrained model
+model_home: path/to/pretrained/model/dir
+load_model: pretrained_model.pth
+model_path: ${model_home}/${load_model}
+
+hydra:
+  run:
+    dir: ${foldername}
+
+  sweep:
+    dir: sweep
+    subdir: ${model.name}
