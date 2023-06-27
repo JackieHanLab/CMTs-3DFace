@@ -40,6 +40,6 @@ Download and unzip `VisualCMT_compressed.zip`, then double click `VisualCMT.exe`
 
 **VisualCMT screenshot:**
 
-<img src="/VisualCMT.png" width="360" height="360">
+<img src="/VisualCMT.png" width="480" height="480">
 
 The software was packed using PyInstaller and mannually reduced volume in a Win11 system, please report issue if the software fail to run in your system.
