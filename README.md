@@ -1,4 +1,4 @@
-## _Privacy-Preserving Age Estimation from Human 3D Facial Data with Coordinate-Wise Monotonic Transformations_ 
+## _Privacy-Preserving Age Estimation from Human 3D Facial Data with Coordinate-Wise Monotonic Transformations_
 ### by Xinyu Bruce Yang, Jing-Dong Jackie Han _et al_.
 
 ![Face Transformer](/FaceTransformer.jpg)
