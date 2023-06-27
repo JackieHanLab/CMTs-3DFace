@@ -2,7 +2,9 @@
 ### by Xinyu Bruce Yang, Jing-Dong Jackie Han _et al_.
 
 
-![Face Transformer](/FaceTransformer.jpg =224x224)
+
+<img src="/FaceTransformer.jpg" width="224" height="224">
+
 > Created in NightCafe with prompts "a cyberpunk neural network as background with a 3D meshed construction toy-like face without body in the center and robotic arms in the periphery touching the face with flash and flares. Picture in no more than 6 colors with the "viridis" palette."
 
 # Facial point cloud-based age estimation
