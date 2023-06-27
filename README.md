@@ -1,6 +1,7 @@
 ## _Privacy-Preserving Age Estimation from Human 3D Facial Data with Coordinate-Wise Monotonic Transformations_ by Xinyu Bruce Yang, Jing-Dong Jackie Han _et al_.
 
 ![Face Transformer](/FaceTransformer.jpg)
+> Created in NightCafe with prompts "a cyberpunk neural network as background with a 3D meshed construction toy-like face without body in the center and robotic arms in the periphery touching the face with flash and flares. Picture in no more than 6 colors with the "viridis" palette."
 
 # Facial point cloud-based age estimation
 Use scripts in `FPCT-age`. Put your data split record (simply in txt format) in `DataSplit`. Modify `config.yaml` in `config` for your training specifications. Run `script_main.py` with `hydra`-style parameter passing (https://hydra.cc/docs/intro/) to train. Modify `batch_test_config.yaml` in `config` for your inference specifications. Run `batch_test_main.py` with `hydra`-style parameter passing to evaluate.
