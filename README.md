@@ -10,8 +10,8 @@ Use scripts in `FPCT-age`. Put your data split record (simply in txt format) in 
 
 e.g.
 ```
-python script_main.py ozername=SGD basic_learning_rate=5e-5
-python batch_test_main.py dataset=path/to/your/data foldername=path/to/save/results
+python script_main.py ozername=SGD basic_learning_rate=5e-5 # train
+python batch_test_main.py dataset=path/to/your/data foldername=path/to/save/results # infer and evaluate
 ```
 
 # Face verification with 3D face point cloud
@@ -19,9 +19,9 @@ Use scripts in `FPCT-ID`. Put your data split record (simply in txt format) in `
 
 e.g.
 ```
-python script_main.py ozername=SGD basic_learning_rate=5e-5
-python batch_inter_test_main.py dataset=path/to/your/data foldername=path/to/save/results
-python GenROC.py
+python script_main.py ozername=SGD basic_learning_rate=5e-5 # train
+python batch_inter_test_main.py dataset=path/to/your/data foldername=path/to/save/results # infer
+python GenROC.py # evaluate
 ```
 
 # VisualCMT
