@@ -5,7 +5,7 @@
 
 > Created in NightCafe with prompts "a cyberpunk neural network as background with a 3D meshed construction toy-like face without body in the center and robotic arms in the periphery touching the face with flash and flares. Picture in no more than 6 colors with the "viridis" palette."
 
-# Facial point cloud-based age estimation
+# Age estimation with 3D face point cloud
 Use scripts in `FPCT-age`. Put your data split record (simply in txt format) in `DataSplit`. Modify `config.yaml` in `config` for your training specifications. Run `script_main.py` with `hydra`-style parameter passing (https://hydra.cc/docs/intro/) to train. Modify `batch_test_config.yaml` in `config` for your inference specifications. Run `batch_test_main.py` with `hydra`-style parameter passing to evaluate.
 
 e.g.
@@ -14,7 +14,7 @@ python script_main.py ozername=SGD basic_learning_rate=5e-5
 python batch_test_main.py dataset=path/to/your/data foldername=path/to/save/results
 ```
 
-# Facial point cloud-based face verification
+# Face verification with 3D face point cloud
 Use scripts in `FPCT-ID`. Put your data split record (simply in txt format) in `DataSplit`. Modify `config.yaml` in `config` for your training specifications. Run `script_main.py` with `hydra`-style parameter passing to train. Modify `batch_inter_test_config.yaml` in `config` for your inference specifications. Run `batch_inter_test_main.py` with `hydra`-style parameter passing to infer. Run `GenROC.py` to get ROC and AUC using a pair of training data inference and test data inference.
 
 e.g.
